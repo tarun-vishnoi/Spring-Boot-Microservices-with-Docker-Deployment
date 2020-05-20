@@ -1,7 +1,3 @@
-spring:
-  application:
-    name: Zuul
-    
 eureka:
   client:
     service-url:
@@ -21,3 +17,18 @@ zuul:  prefix: /gateway
     ms_query:
       path: /ms-query/**
       service-id: ms_query
+      
+ribbon:
+  ConnectTimeout: 1000
+  ReadTimeout: 50000
+  eureka:    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 120000
+
+  

@@ -1,7 +1,3 @@
-spring:
-  application:
-    name: ms_query
-    
 eureka:
   client:
     service-url:

@@ -1,4 +1,4 @@
-package com.result.config;
+package com.scheduler.config;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -13,7 +13,7 @@ import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
 import org.springframework.scheduling.quartz.JobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
-import com.result.job.QueryRestJob;
+import com.scheduler.job.QueryRestJob;
 
 @Configuration
 public class QuartzConfig {
@@ -23,11 +23,6 @@ public class QuartzConfig {
 			@Autowired @Qualifier("queryRestJob") JobDetailFactoryBean jobDetailFactoryBean,
 			@Autowired @Qualifier("queryRestTrigger") CronTriggerFactoryBean cronTriggerFactoryBean) throws Exception {
 		SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean();
-		/*
-		 * schedulerFactoryBean.setOverwriteExistingJobs(true);
-		 * schedulerFactoryBean.setWaitForJobsToCompleteOnShutdown(true);
-		 * schedulerFactoryBean.setAutoStartup(true);
-		 */
 		schedulerFactoryBean.setQuartzProperties(quartzProperties());
 		schedulerFactoryBean.setJobDetails(jobDetailFactoryBean.getObject());
 		schedulerFactoryBean.setTriggers(cronTriggerFactoryBean.getObject());
