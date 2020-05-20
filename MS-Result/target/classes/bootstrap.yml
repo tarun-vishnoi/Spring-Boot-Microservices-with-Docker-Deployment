@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: ms_result
+  cloud:
+    config:
+      uri: http://localhost:8763/

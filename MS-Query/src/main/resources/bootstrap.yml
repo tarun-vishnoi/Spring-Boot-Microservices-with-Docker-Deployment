@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: ms_query
+  cloud:
+    config:
+      uri: http://localhost:8763/

@@ -1,0 +1,4 @@
+com\scheduler\job\QueryRestJob.class
+com\scheduler\config\QuartzConfig.class
+com\scheduler\MsSchedulerApplication.class
+com\scheduler\security\SecurityConfig.class
