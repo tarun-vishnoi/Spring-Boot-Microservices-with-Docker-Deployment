@@ -12,7 +12,7 @@
 	<groupId>com.result</groupId>
 	<artifactId>MS-Result</artifactId>
 	<version>1.0</version>
-	<name>MS-Result</name>
+	<name>ms_result</name>
 	<description>Microservices</description>
 
 	<properties>
@@ -44,15 +44,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>de.codecentric</groupId>
-			<artifactId>spring-boot-admin-starter-client</artifactId>
-			<version>2.1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
 	</dependencies>
 
