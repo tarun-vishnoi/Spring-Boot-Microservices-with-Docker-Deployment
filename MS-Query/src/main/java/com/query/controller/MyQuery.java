@@ -25,12 +25,10 @@ public class MyQuery {
 	@HystrixCommand(fallbackMethod = "defaultResult")
 	public String getResult() {
 		LOGGER.info("MyQuery :: getResult() :: START");
-		String resultUrl = "http://localhost:8762/gateway/ms-result/result";
+		String resultUrl = "http://zuul:8762/gateway/ms-result/result";
 		String msResultResponse = restTemplate.getForObject(resultUrl, String.class);
-		LOGGER.info("MyQuery " + msResultResponse);
-		String msQueryResponse = "Hi ! Query from instance --> " + instanceId + msResultResponse;
 		LOGGER.info("MyQuery :: getResult() :: END");
-		return msQueryResponse;
+		return msResultResponse;
 	}
 
 	public String defaultResult() {

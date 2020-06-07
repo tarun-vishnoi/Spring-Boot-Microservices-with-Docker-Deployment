@@ -17,6 +17,6 @@ public class MyResult {
 	@RequestMapping(value = "/result")
 	public String printResult() {
 		LOGGER.info("MyResult :: printResult() :: " + instanceId);
-		return " and Result from instance --> " + instanceId;
+		return "Result from instance --> " + instanceId;
 	}
 }

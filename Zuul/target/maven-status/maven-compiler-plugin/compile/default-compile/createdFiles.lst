@@ -1,1 +1,3 @@
+com\zuul\security\SecurityConfig.class
 com\zuul\ZuulApplication.class
+com\zuul\filter\RequestFilter.class

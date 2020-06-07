@@ -1,0 +1,50 @@
+version: '3.7'
+services:
+    
+  eureka:
+    build:
+      context: eureka
+      dockerfile: Dockerfile
+    ports:
+      - 8761:8761
+    restart: always
+    networks:
+      - micro-service-network
+    
+  zuul:
+    build:
+      context: zuul
+      dockerfile: Dockerfile
+    environment:
+      RABBIT_URI: amqp://guest:guest@rabbitmq:5672
+    ports:
+      - 8762:8762
+    restart: always
+    depends_on:
+      - eureka
+    networks:
+      - micro-service-network
+    
+  ms-result:
+    build:
+      context: ms-result
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - eureka
+    networks:
+      - micro-service-network
+    
+  ms-query:
+    build:
+      context: ms-query
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - eureka
+      - ms-result
+    networks:
+      - micro-service-network
+    
+networks:
+  micro-service-network:
