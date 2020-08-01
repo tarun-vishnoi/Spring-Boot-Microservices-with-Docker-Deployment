@@ -1,6 +1,16 @@
 version: '3.7'
 services:
-    
+  
+  zipkin:
+    build:
+      context: zipkin
+      dockerfile: Dockerfile
+    ports:
+      - 9411:9411
+    restart: always
+    networks:
+      - micro-service-network
+  
   eureka:
     build:
       context: eureka
@@ -15,34 +25,37 @@ services:
     build:
       context: zuul
       dockerfile: Dockerfile
-    environment:
-      RABBIT_URI: amqp://guest:guest@rabbitmq:5672
     ports:
       - 8762:8762
     restart: always
     depends_on:
       - eureka
+      - zipkin
     networks:
       - micro-service-network
     
-  ms-result:
+  result:
     build:
-      context: ms-result
+      context: result
       dockerfile: Dockerfile
     restart: always
     depends_on:
       - eureka
+      - zuul
+      - zipkin
     networks:
       - micro-service-network
     
-  ms-query:
+  query:
     build:
-      context: ms-query
+      context: query
       dockerfile: Dockerfile
     restart: always
     depends_on:
+      - zuul
       - eureka
-      - ms-result
+      - result
+      - zipkin
     networks:
       - micro-service-network
     

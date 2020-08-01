@@ -27,14 +27,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 	</dependencies>
@@ -66,12 +58,12 @@
 						<id>default</id>
 						<goals>
 							<goal>build</goal>
-							<!-- <goal>push</goal> -->
+							<goal>push</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<repository>tarunvishnoi/${project.name}</repository>
+					<repository>tarunvishnoi/micro-services/${project.name}</repository>
 					<tag>${project.version}</tag>
 					<pullNewerImage>false</pullNewerImage>
 					<skipDockerInfo>true</skipDockerInfo>
